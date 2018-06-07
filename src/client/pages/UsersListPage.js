@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../../actions/index';
+import { fetchUsers } from '../actions/index';
 // import { Helmet } from 'react-helmet';
 
-class UsersList extends Component {
+class UsersListPage extends Component {
     componentDidMount() {
         this.props.fetchUsers();
     }
@@ -38,8 +38,10 @@ function mapStateToProps(state) {
     return { users: state.users };
 }
 
-// function loadData(store) {
-//     return store.dispatch(fetchUsers());
-// }
-
-export default connect(mapStateToProps, { fetchUsers })(UsersList);
+function loadData(store) {
+    return store.dispatch(fetchUsers());
+}
+export default {
+    component: connect(mapStateToProps, { fetchUsers })(UsersListPage),
+    loadData
+};
