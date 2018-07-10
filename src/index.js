@@ -1,15 +1,18 @@
 import 'babel-polyfill';
 import express from 'express';
 import {matchRoutes} from 'react-router-config';
+import proxy from 'express-http-proxy';
 import Routes from './client/Routes';
 import renderer from './helpers/renderer';
 import createStore from './helpers/createStore';
 
 // Starting express server
 const app = express();
+// A proxy for auth
+app.use('/api', proxy('http://react-ssr-api.herokuapp.com'));
 app.use(express.static('public'));
 
-// All incoming requests are going to handle in this callback function.
+// All incoming requests are going to h andle in this callback function.
 app.get('*', function (req, res) {
   // make redux store on server
   const store = createStore();
