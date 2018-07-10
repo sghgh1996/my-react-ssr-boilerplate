@@ -6,6 +6,7 @@ import {renderRoutes} from 'react-router-config';
 import {Provider} from 'react-redux';
 import serialize from 'serialize-javascript';
 
+// This is the place where in the server the ssr happens.
 export default (req, store)=>{
     const content = renderToString(
         <Provider store={store}>
@@ -15,6 +16,7 @@ export default (req, store)=>{
         </Provider>
     );
 
+    // The String got in init page loading. serialize is for xss attack
     return `
         <html>
             <head></head>
