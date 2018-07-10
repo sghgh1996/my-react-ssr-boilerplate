@@ -15,7 +15,7 @@ app.use(express.static('public'));
 // All incoming requests are going to h andle in this callback function.
 app.get('*', function (req, res) {
   // make redux store on server
-  const store = createStore();
+  const store = createStore(req);
 
   // Every component which has data initializing, based on api or any thing
   // need to have a loadData function. Here before renderToString, actually in
