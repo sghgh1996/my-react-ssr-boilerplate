@@ -1,14 +1,14 @@
 import React from 'react';
-
-const HomePage = () => {
-    return (
-        <div>
-            <div>hello man??</div>
-            <button onClick={()=>{alert('yes bitch');}}>click me !!!</button>
-        </div>
-    );
+// Change this according to your project
+const Home = () => {
+  return (
+    <div className="center-align" style={{ marginTop: '200px' }}>
+      <h3>Welcome</h3>
+      <p>Check out these awesome features</p>
+    </div>
+  );
 };
 
 export default {
-    component: HomePage
+  component: Home
 };

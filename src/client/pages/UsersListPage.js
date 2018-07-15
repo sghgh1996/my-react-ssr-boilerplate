@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/index';
+import { fetchUsers } from '../actions';
+import { Helmet } from 'react-helmet';
 
-class UsersListPage extends Component {
+// Change this according to your project
+class UsersList extends Component {
   componentDidMount() {
     this.props.fetchUsers();
   }
@@ -13,9 +15,19 @@ class UsersListPage extends Component {
     });
   }
 
+  head() {
+    return (
+      <Helmet>
+        <title>{`${this.props.users.length} Users Loaded`}</title>
+        <meta property="og:title" content="Users App" />
+      </Helmet>
+    );
+  }
+
   render() {
     return (
       <div>
+        {this.head()}
         Here's a big list of users:
         <ul>{this.renderUsers()}</ul>
       </div>
@@ -27,11 +39,12 @@ function mapStateToProps(state) {
   return { users: state.users };
 }
 
-// Every component that need data loading from api or any where needs this.
+// Fill store on server side
 function loadData(store) {
   return store.dispatch(fetchUsers());
 }
+
 export default {
-  component: connect(mapStateToProps, { fetchUsers })(UsersListPage),
-  loadData
+  loadData,
+  component: connect(mapStateToProps, { fetchUsers })(UsersList)
 };

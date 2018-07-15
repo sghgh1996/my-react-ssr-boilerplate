@@ -18,16 +18,16 @@ const axiosInstance = axios.create({
 
 // Store for client side
 const store = createStore(
-    reducers,
-    window.INITIAL_STATE,
-    applyMiddleware(thunk.withExtraArgument(axiosInstance)
+  reducers,
+  window.INITIAL_STATE,
+  applyMiddleware(thunk.withExtraArgument(axiosInstance)
 );
 // Just in browser
 ReactDOM.hydrate(
-    <Provider store={store}>
-        <BrowserRouter>
-            <div>{renderRoutes(Routes)}</div>
-        </BrowserRouter>
-    </Provider>,
-    document.querySelector('#root')
+  <Provider store={store}>
+    <BrowserRouter>
+      <div>{renderRoutes(Routes)}</div>
+    </BrowserRouter>
+  </Provider>,
+  document.querySelector('#root')
 );

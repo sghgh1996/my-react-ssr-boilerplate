@@ -3,6 +3,7 @@ import { renderRoutes } from 'react-router-config';
 import Header from './components/Header';
 import { fetchCurrentUser } from './actions';
 
+// It's like a layout for app
 const App = ({ route }) => {
   return (
     <div>

@@ -3,8 +3,9 @@ import App from './App';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import NotFoundPage from './pages/NotFoundPage';
-// import AdminsListPage from './pages/AdminsListPage';
+import AdminsListPage from './pages/AdminsListPage';
 
+// All routes are in here. Need renderRoutes function
 export default [
   {
     ...App,
@@ -14,10 +15,10 @@ export default [
         path: '/',
         exact: true
       },
-      // {
-      //   ...AdminsListPage,
-      //   path: '/admins'
-      // },
+      {
+        ...AdminsListPage,
+        path: '/admins'
+      },
       {
         ...UsersListPage,
         path: '/users'
